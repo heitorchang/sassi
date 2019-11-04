@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'fridge',
+    'tesdir',
     'ui',
     'django.contrib.admin',
     'django.contrib.auth',

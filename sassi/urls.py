@@ -6,4 +6,6 @@ urlpatterns = [
     path('', ui_index, name="index"),
     path('ui/', include('ui.urls')),
     path('admin/', admin.site.urls),
+    path('tesdir/', include('tesdir.urls')),
+    path('fridge/', include('fridge.urls')),
 ]
