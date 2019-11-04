@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['sassi.nfshost.com', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'extrato',
     'fridge',
     'tesdir',
     'ui',
@@ -108,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 USE_L10N = False

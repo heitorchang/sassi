@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Tipo(models.Model):
     """Tipo de titulo"""
     nome = models.CharField(max_length=50)

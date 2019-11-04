@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+	<style>
+	  td {
+	  text-align: right;
+	  padding: 2px 8px;
+	  }
+
+	  .left {
+	  text-align: left;
+	  }
+	</style>
+  </head>
+  <body>
+	<a href="{% url "extrato:index" %}">Extrato</a>
+	&bullet;
+	<a href="{% url "extrato:transacoes" %}">Todas as transacoes</a>
+	&bullet;
+	<a href="/admin/extrato/transacao/add/">Nova transacao</a>
+	<br><br>
+	{% block content %}{% endblock %}
+  </body>
+</html>

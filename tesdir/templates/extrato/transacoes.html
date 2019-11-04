@@ -1,0 +1,36 @@
+{% extends "extrato/base.html" %}
+
+{% block content %}
+Todas as transacoes
+
+<table>
+  <tr>
+	<td>Data</td>
+	<td>Mov.</td>
+	<td>Corretora</td>
+	<td>Titulo</td>
+	<td>Qtde.</td>
+	<td>Rend.</td>
+	<td>Preço</td>
+	<td>Editar</td>
+	<td>Anotações</td>
+  </tr>
+  
+
+  {% for tr in transacoes %}
+
+  <tr>
+	<td>{{ tr.data|date:"Y-m-d" }}</td>
+	<td>{% if tr.sinal == 1 %}Compra{% else %}Venda{% endif %}</td>
+	<td>{{ tr.corretora }}</td>
+	<td>{{ tr.titulo }}</td>
+	<td>{{ tr.quantidade }}</td>
+	<td>{{ tr.rendimento }}%</td>
+	<td>{{ tr.preco }}</td>
+	<td><a href="/admin/extrato/transacao/{{ tr.id }}/change/">editar</a></td>
+	<td class="left">{{ tr.anotacoes }}</td>
+  </tr>
+
+{% endfor %}
+</table>
+{% endblock %}

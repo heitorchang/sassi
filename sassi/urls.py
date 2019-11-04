@@ -8,4 +8,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('tesdir/', include('tesdir.urls')),
     path('fridge/', include('fridge.urls')),
+    path('extrato/', include('extrato.urls')),
 ]
