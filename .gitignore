@@ -1,0 +1,28 @@
+# Emacs
+
+*~
+\#*
+.\#*
+
+
+# Python
+
+__pycache__/
+
+
+# Virtualenv
+
+venv/
+
+
+# Django
+
+secrets.py
+db.sqlite3
+
+
+# touch these files so you can autocomplete the manage.py commands
+
+runserver
+makemigrations
+migrate
