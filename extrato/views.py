@@ -3,6 +3,7 @@ from collections import defaultdict
 from decimal import Decimal
 
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.db.models import Sum
 
@@ -74,7 +75,7 @@ def agregarTransacoes(trs):
     return result
 
     
-        
+@login_required        
 def index(request):
     corretoras = Corretora.objects.all()
 
@@ -101,6 +102,7 @@ def index(request):
                                                      'grandTotal': "{:,.2f}".format(grandTotal)})
     
 
+@login_required
 def transacoes(request):
     transacoes = Transacao.objects.all()
 
