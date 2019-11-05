@@ -1,45 +1,49 @@
-<h1>
-    Storage
-</h1>
+<body>
+    <h1><a href="/admin/fridge">Admin</a></h1>
+    
+    <h1>
+        Storage
+    </h1>
 
-{% for fridge in fridges %}
+    {% for fridge in fridges %}
 
-{{ fridge }}
+    {{ fridge }}
 
-<ul>
-    {% for ingredient in fridge.ingredient_set.all %}
-    <li>{{ ingredient.amount }} {{ ingredient.product.name }}</li>
-    {% endfor %}
-</ul>
-
-{% endfor %}
-
-<h1>
-    Recipes
-</h1>
-
-{% for recipe in recipes %}
-
-<h3>{{ recipe.name }}</h3>
-
-{% if recipe.missing %}
-<div style="color: red;">
-    <h5>Missing Ingredients</h5>
     <ul>
-        {% for m in recipe.missing %}
-        <li>{{ m }}</li>
+        {% for ingredient in fridge.ingredient_set.all %}
+        <li>{{ ingredient.amount }} {{ ingredient.product.name }}</li>
         {% endfor %}
     </ul>
-    {% endif %}
-</div>
 
-<h3>Gather these ingredients</h3>
-<ul>
-    {% for requirement in recipe.requirement_set.all %}
-    <li>{{ requirement.amount }} {{ requirement.product.name }}</li>
     {% endfor %}
-</ul>
 
-<pre>{{ recipe.procedure }}</pre>
+    <h1>
+        Recipes
+    </h1>
 
-{% endfor %}
+    {% for recipe in recipes %}
+
+    <h3>{{ recipe.name }}</h3>
+
+    {% if recipe.missing %}
+    <div style="color: red;">
+        <h5>Missing Ingredients</h5>
+        <ul>
+            {% for m in recipe.missing %}
+            <li>{{ m }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+    <h3>Gather these ingredients</h3>
+    <ul>
+        {% for requirement in recipe.requirement_set.all %}
+        <li>{{ requirement.amount }} {{ requirement.product.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <pre>{{ recipe.procedure }}</pre>
+
+    {% endfor %}
+</body>

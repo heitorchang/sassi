@@ -33,7 +33,7 @@ class Fridge(models.Model):
 class Ingredient(models.Model):
     """Specific amount, weight, etc. of a Product"""
 
-    fridge = models.ForeignKey(Fridge, on_delete=models.CASCADE, null=True, blank=True)  # belongs to
+    fridge = models.ForeignKey(Fridge, on_delete=models.CASCADE)
     amount = models.CharField(max_length=78)  # units, weight or volume
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
