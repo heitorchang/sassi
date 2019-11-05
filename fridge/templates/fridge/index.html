@@ -22,6 +22,18 @@
 
 <h3>{{ recipe.name }}</h3>
 
+{% if recipe.missing %}
+<div style="color: red;">
+    <h5>Missing Ingredients</h5>
+    <ul>
+        {% for m in recipe.missing %}
+        <li>{{ m }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
+<h3>Gather these ingredients</h3>
 <ul>
     {% for requirement in recipe.requirement_set.all %}
     <li>{{ requirement.amount }} {{ requirement.product.name }}</li>

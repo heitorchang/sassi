@@ -52,6 +52,14 @@ class Recipe(models.Model):
     name = models.CharField(max_length=78)
     procedure = models.TextField(blank=True)
 
+
+    def missing(self):
+        requirements = self.requirement_set.all()
+        available_ingredients = Ingredient.objects.all()
+        required_products = set(req.product.name for req in requirements)
+        available_products = set(ingr.product.name for ingr in available_ingredients)
+        return sorted(required_products - available_products)
+    
     
     class Meta:
         ordering = ['name']
