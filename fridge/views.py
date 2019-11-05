@@ -1,6 +1,11 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Fridge, Recipe
+
 
 def index(request):
-    return render(request, 'fridge/index.html')
+    fridges = Fridge.objects.all()
+    recipes = Recipe.objects.all()
+    return render(request, 'fridge/index.html',
+                  {'fridges': fridges,
+                   'recipes': recipes})
