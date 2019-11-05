@@ -34,8 +34,8 @@ class Ingredient(models.Model):
     """Specific amount, weight, etc. of a Product"""
 
     fridge = models.ForeignKey(Fridge, on_delete=models.CASCADE)
-    amount = models.CharField(max_length=78)  # units, weight or volume
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    amount = models.CharField(max_length=78)  # units, weight or volume
 
 
 
@@ -72,8 +72,8 @@ class Requirement(models.Model):
     """Specific ingredient for a Recipe"""
     
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    amount = models.CharField(max_length=78)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    amount = models.CharField(max_length=78)
 
 
     class Meta:
