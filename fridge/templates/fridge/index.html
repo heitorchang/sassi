@@ -2,20 +2,22 @@
 {% load static %}
 {% block content %}
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Recipes</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="fridges-tab" data-toggle="tab" href="#fridges" role="tab" aria-controls="fridges" aria-selected="false">Fridges</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="diary-tab" data-toggle="tab" href="#diary" role="tab" aria-controls="diary" aria-selected="false">Diary</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/admin/fridge/">Admin</a>
-    </li>
-</ul>
+<nav class="navbar sticky-top navbar-light bg-light">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Recipes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="fridges-tab" data-toggle="tab" href="#fridges" role="tab" aria-controls="fridges" aria-selected="false">Fridges</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="diary-tab" data-toggle="tab" href="#diary" role="tab" aria-controls="diary" aria-selected="false">Diary</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/fridge/">Admin</a>
+        </li>
+    </ul>
+</nav>
 
 <!-- Tab panes -->
 <div class="tab-content">
