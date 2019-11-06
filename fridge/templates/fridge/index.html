@@ -22,17 +22,15 @@
     <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
         {% for fridge in fridges %}
 
-        {{ fridge }}
+        <h5>{{ fridge }}</h5>
 
-        <ul>
-            {% for ingredient in fridge.ingredient_set.all %}
-            <li>
-                <span class="date">{{ ingredient.updated|date:'D d/m' }}</span>
-                {{ ingredient.amount }}
-                <span class="ingredient">{{ ingredient.product.name }}</span>
-            </li>
-            {% endfor %}
-        </ul>
+        {% for ingredient in fridge.ingredient_set.all %}
+        &nbsp;&nbsp;&nbsp;
+        <span class="date">{{ ingredient.updated|date:'D d/m' }}</span>
+        {{ ingredient.amount }}
+        <span class="ingredient">{{ ingredient.product.name }}</span>
+        <br>
+        {% endfor %}
 
         {% endfor %}
     </div>
