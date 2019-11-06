@@ -43,6 +43,7 @@
                         {{ entry.cooked_on|date:'D d/m' }}
                         {% if not forloop.last %}, {% endif %}
                         {% endfor %}
+                        <br><br>
                         {% if recipe.missing %}
                         <div style="color: red;">
                             <h5>Missing Ingredients</h5>
@@ -53,7 +54,6 @@
                             </ul>
                         </div>
                         {% endif %}
-                        <br><br>
                         <h5>Gather these ingredients</h5>
                         <ul>
                             {% for requirement in recipe.requirement_set.all %}
