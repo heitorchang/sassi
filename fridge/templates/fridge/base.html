@@ -5,10 +5,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/fontfaces.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bs.min.css' %}">
         <title>My Title</title>
         <style>
          body {
              font-family: Paprika;
+             margin-left: 10px;
+             margin-top: 10px;
          }
          
          .date {
@@ -38,6 +41,7 @@
     
     <body>
         {% block content %}{% endblock %}
+        <script src="{% static 'js/bs.min.js' %}"></script>
     </body>
 </html>
 

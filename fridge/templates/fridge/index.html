@@ -1,60 +1,76 @@
 {% extends "fridge/base.html" %}
 {% block content %}
-<h1><a href="/admin/fridge">Admin</a></h1>
 
-<h1>
-    Storage
-</h1>
-
-{% for fridge in fridges %}
-
-{{ fridge }}
-
-<ul>
-    {% for ingredient in fridge.ingredient_set.all %}
-    <li>
-        <span class="date">{{ ingredient.updated|date:'d/m/y' }}</span>
-        {{ ingredient.amount }}
-        <span class="ingredient">{{ ingredient.product.name }}</span>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Fridges</a>
     </li>
-    {% endfor %}
+    <li class="nav-item">
+        <a class="nav-link" id="recipes-tab" data-toggle="tab" href="#recipes" role="tab" aria-controls="recipes" aria-selected="false">Recipes</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="diary-tab" data-toggle="tab" href="#diary" role="tab" aria-controls="diary" aria-selected="false">Diary</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/fridge/">Admin</a>
+    </li>
 </ul>
 
-{% endfor %}
+<!-- Tab panes -->
+<div class="tab-content">
+    <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        {% for fridge in fridges %}
 
-<h1>
-    Recipes
-</h1>
+        {{ fridge }}
 
-{% for recipe in recipes %}
+        <ul>
+            {% for ingredient in fridge.ingredient_set.all %}
+            <li>
+                <span class="date">{{ ingredient.updated|date:'d/m/y' }}</span>
+                {{ ingredient.amount }}
+                <span class="ingredient">{{ ingredient.product.name }}</span>
+            </li>
+            {% endfor %}
+        </ul>
 
-<h3>{{ recipe.name }}</h3>
-
-{% if recipe.missing %}
-<div style="color: red;">
-    <h5>Missing Ingredients</h5>
-    <ul>
-        {% for m in recipe.missing %}
-        <li>{{ m }}</li>
         {% endfor %}
-    </ul>
-    {% endif %}
+    </div>
+    
+    <div class="tab-pane" id="recipes" role="tabpanel" aria-labelledby="recipes-tab">
+        {% for recipe in recipes %}
+        
+        <h3>{{ recipe.name }}</h3>
+        
+        {% if recipe.missing %}
+        <div style="color: red;">
+            <h5>Missing Ingredients</h5>
+            <ul>
+                {% for m in recipe.missing %}
+                <li>{{ m }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        
+        <h5>Gather these ingredients</h5>
+        <ul>
+            {% for requirement in recipe.requirement_set.all %}
+            <li>
+                {{ requirement.amount }}
+                <span class="ingredient">{{ requirement.product.name }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <div class="procedureblock">
+            <pre>{{ recipe.procedure }}</pre>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="tab-pane" id="diary" role="tabpanel" aria-labelledby="diary-tab">
+        Dates and dishes
+    </div>
 </div>
-
-<h3>Gather these ingredients</h3>
-<ul>
-    {% for requirement in recipe.requirement_set.all %}
-    <li>
-        {{ requirement.amount }}
-        <span class="ingredient">{{ requirement.product.name }}</span>
-    </li>
-    {% endfor %}
-</ul>
-
-<div class="procedureblock">
-    <pre>{{ recipe.procedure }}</pre>
-</div>
-
-{% endfor %}
 
 {% endblock %}
