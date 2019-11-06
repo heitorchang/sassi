@@ -82,3 +82,17 @@ class Requirement(models.Model):
 
     def __str__(self):
         return f"{self.amount} {self.product} ({self.recipe.name})"
+
+
+class DiaryEntry(models.Model):
+    """Date when a dish was cooked"""
+
+    cooked_on = models.DateField()
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+
+
+    class Meta:
+        ordering = ['-cooked_on']
+
+    def __str__(self):
+        return f"{self.cooked_on} {self.recipe.name}"
