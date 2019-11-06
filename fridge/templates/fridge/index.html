@@ -32,7 +32,11 @@
 
         <ul>
             {% for ingredient in fridge.ingredient_set.all %}
-            <li><span class="date">{{ ingredient.updated|date:'d/m/y' }}</span> {{ ingredient.amount }} {{ ingredient.product.name }}</li>
+            <li>
+                <span class="date">{{ ingredient.updated|date:'d/m/y' }}</span>
+                {{ ingredient.amount }}
+                <span class="ingredient">{{ ingredient.product.name }}</span>
+            </li>
             {% endfor %}
         </ul>
 
