@@ -64,7 +64,10 @@
         <h3>Gather these ingredients</h3>
         <ul>
             {% for requirement in recipe.requirement_set.all %}
-            <li>{{ requirement.amount }} {{ requirement.product.name }}</li>
+            <li>
+                {{ requirement.amount }}
+                <span class="ingredient">{{ requirement.product.name }}</span>
+            </li>
             {% endfor %}
         </ul>
 
