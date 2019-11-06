@@ -1,86 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>My Title</title>
-        <style>
-         .date {
-             font-size: 0.8em;
-             background-color: #6ff;
-             padding: 0px 3px;
-             margin-right: 6px;
-         }
+{% extends "fridge/base.html" %}
+{% block content %}
+<h1><a href="/admin/fridge">Admin</a></h1>
 
-         .ingredient {
-             background-color: #ffa;
-         }
+<h1>
+    Storage
+</h1>
 
-         .procedureblock > pre {
-             white-space: pre-wrap;
-             word-wrap: break-word;
-             width: 100%;
-         }
-         
-        </style>
-    </head>
-    
-    <body>
-        <h1><a href="/admin/fridge">Admin</a></h1>
-        
-        <h1>
-            Storage
-        </h1>
+{% for fridge in fridges %}
 
-        {% for fridge in fridges %}
+{{ fridge }}
 
-        {{ fridge }}
+<ul>
+    {% for ingredient in fridge.ingredient_set.all %}
+    <li>
+        <span class="date">{{ ingredient.updated|date:'d/m/y' }}</span>
+        {{ ingredient.amount }}
+        <span class="ingredient">{{ ingredient.product.name }}</span>
+    </li>
+    {% endfor %}
+</ul>
 
-        <ul>
-            {% for ingredient in fridge.ingredient_set.all %}
-            <li>
-                <span class="date">{{ ingredient.updated|date:'d/m/y' }}</span>
-                {{ ingredient.amount }}
-                <span class="ingredient">{{ ingredient.product.name }}</span>
-            </li>
-            {% endfor %}
-        </ul>
+{% endfor %}
 
+<h1>
+    Recipes
+</h1>
+
+{% for recipe in recipes %}
+
+<h3>{{ recipe.name }}</h3>
+
+{% if recipe.missing %}
+<div style="color: red;">
+    <h5>Missing Ingredients</h5>
+    <ul>
+        {% for m in recipe.missing %}
+        <li>{{ m }}</li>
         {% endfor %}
+    </ul>
+    {% endif %}
+</div>
 
-        <h1>
-            Recipes
-        </h1>
+<h3>Gather these ingredients</h3>
+<ul>
+    {% for requirement in recipe.requirement_set.all %}
+    <li>
+        {{ requirement.amount }}
+        <span class="ingredient">{{ requirement.product.name }}</span>
+    </li>
+    {% endfor %}
+</ul>
 
-        {% for recipe in recipes %}
+<div class="procedureblock">
+    <pre>{{ recipe.procedure }}</pre>
+</div>
 
-        <h3>{{ recipe.name }}</h3>
+{% endfor %}
 
-        {% if recipe.missing %}
-        <div style="color: red;">
-            <h5>Missing Ingredients</h5>
-            <ul>
-                {% for m in recipe.missing %}
-                <li>{{ m }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-        </div>
-
-        <h3>Gather these ingredients</h3>
-        <ul>
-            {% for requirement in recipe.requirement_set.all %}
-            <li>
-                {{ requirement.amount }}
-                <span class="ingredient">{{ requirement.product.name }}</span>
-            </li>
-            {% endfor %}
-        </ul>
-
-        <div class="procedureblock">
-            <pre>{{ recipe.procedure }}</pre>
-        </div>
-
-        {% endfor %}
-    </body>
-</html>
+{% endblock %}
