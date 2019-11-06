@@ -40,12 +40,14 @@
             
             {% for recipe in recipes %}
             <div class="card">
-                <div class="card-header" id="heading{{ recipe.id }}" data-toggle="collapse" data-target="#collapse{{ recipe.id }}" >
+                <div class="card-header" id="heading{{ recipe.id }}">
                     <h5 class="mb-0">
-                        {{ recipe.name }}
-                        {% if recipe.missing %}
-                        <img src="{% static 'img/warning.png' %}" alt="(!)">
-                        {% endif %}
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ recipe.id }}">
+                            {{ recipe.name }}
+                            {% if recipe.missing %}
+                            <img src="{% static 'img/warning.png' %}" alt="(!)">
+                            {% endif %}
+                        </button>
                     </h5>
                 </div>
                 <div id="collapse{{ recipe.id }}" class="collapse" aria-labelledby="heading{{ recipe.id }}" data-parent="#accordionExample">
