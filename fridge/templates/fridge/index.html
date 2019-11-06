@@ -46,6 +46,8 @@
                             {{ recipe.name }}
                             {% if recipe.missing %}
                             <img src="{% static 'img/warning.png' %}" alt="(!)">
+                            {% else %}
+                            <img src="{% static 'img/checkmark.png' %}" alt="ok">
                             {% endif %}
                         </button>
                     </h5>
