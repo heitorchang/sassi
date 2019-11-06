@@ -7,7 +7,7 @@ class Product(models.Model):
     cabbage, onion, rice
     """
 
-    name = models.CharField(max_length=78)
+    name = models.CharField(max_length=78, unique=True)
 
     
     class Meta:
