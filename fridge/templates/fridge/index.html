@@ -38,6 +38,11 @@
                 </div>
                 <div id="collapse{{ recipe.id }}" class="collapse" aria-labelledby="heading{{ recipe.id }}" data-parent="#accordionExample">
                     <div class="card-body">
+                        <b>Last prepared:</b>
+                        {% for entry in recipe.diaryentry_set.all|slice:":3" %}
+                        {{ entry.cooked_on|date:'D d/m' }}
+                        {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
                         {% if recipe.missing %}
                         <div style="color: red;">
                             <h5>Missing Ingredients</h5>
@@ -48,7 +53,7 @@
                             </ul>
                         </div>
                         {% endif %}
-                        
+                        <br><br>
                         <h5>Gather these ingredients</h5>
                         <ul>
                             {% for requirement in recipe.requirement_set.all %}
@@ -82,7 +87,7 @@
         <br>
         {% endfor %}
 
-        <br><br>
+        <br>
         {% endfor %}
     </div>
     
