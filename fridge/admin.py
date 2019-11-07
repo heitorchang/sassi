@@ -5,7 +5,7 @@ from . import models
 
 class IngredientInline(admin.StackedInline):
     model = models.Ingredient
-    extra = 2
+    extra = 1
 
 
 class FridgeAdmin(admin.ModelAdmin):
@@ -17,7 +17,7 @@ class FridgeAdmin(admin.ModelAdmin):
 
 class RequirementInline(admin.StackedInline):
     model = models.Requirement
-    extra = 2
+    extra = 1
 
     
 class RecipeAdmin(admin.ModelAdmin):
