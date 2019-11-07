@@ -79,7 +79,7 @@
     <div class="tab-pane" id="fridges" role="tabpanel" aria-labelledby="fridges-tab">
         {% for fridge in fridges %}
 
-        <h5>{{ fridge }}</h5>
+        <h5><a href="/admin/fridge/fridge/{{ fridge.id }}/change/">{{ fridge }}</a></h5>
 
         {% for ingredient in fridge.ingredient_set.all %}
         &nbsp;&nbsp;&nbsp;

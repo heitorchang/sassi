@@ -17,7 +17,7 @@ class FridgeAdmin(admin.ModelAdmin):
 
 class RequirementInline(admin.StackedInline):
     model = models.Requirement
-    extra = 4
+    extra = 2
 
     
 class RecipeAdmin(admin.ModelAdmin):
