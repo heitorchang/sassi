@@ -41,8 +41,8 @@
                 </div>
                 <div id="collapse{{ recipe.id }}" class="collapse" aria-labelledby="heading{{ recipe.id }}" data-parent="#accordionExample">
                     <div class="card-body">
-                        <b>Last prepared:</b>
-                        {% for entry in recipe.diaryentry_set.all|slice:":3" %}
+                        <b>Last prepared (5 newest):</b>
+                        {% for entry in recipe.diaryentry_set.all|slice:":5" %}
                         {{ entry.cooked_on|date:'D d/m' }}
                         {% if not forloop.last %}, {% endif %}
                         {% endfor %}
