@@ -47,6 +47,8 @@
                         {% if not forloop.last %}, {% endif %}
                         {% endfor %}
                         <br><br>
+                        <a href="/admin/fridge/recipe/{{ recipe.id }}/change/" clas="btn btn-primary">Edit recipe</a>
+                        <br><br>
                         {% if recipe.missing %}
                         <div style="color: red;">
                             <h5>Missing Ingredients</h5>
