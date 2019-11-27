@@ -53,6 +53,7 @@
                         <br><br>
                         <a href="/admin/fridge/recipe/{{ recipe.id }}/change/" class="btn btn-primary">Edit recipe</a>
                         <br><br>
+                        {% comment %}
                         {% if recipe.missing %}
                         <div style="color: red;">
                             <h5>Missing Ingredients</h5>
@@ -63,6 +64,7 @@
                             </ul>
                         </div>
                         {% endif %}
+                        {% endcomment %}
                         <h5>Gather these ingredients</h5>
                         <ul>
                             {% for requirement in recipe.requirement_set.all %}
