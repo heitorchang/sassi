@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Fridge - Printable recipe</title>
+    </head>
+    <body>
+        <h3>
+            {{ recipe.name }}
+        </h3>
+
+        Ingredients:
+
+        <ul>
+            {% for ingredient in recipe.requirement_set.all %}
+            <li>{{ ingredient.amount }} {{ ingredient.product }}</li>
+            {% endfor %}
+        </ul>
+        
+        <p>
+            {{ recipe.procedure }}
+        </p>
+        
+    </body>
+</html>

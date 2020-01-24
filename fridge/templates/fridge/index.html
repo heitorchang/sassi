@@ -52,6 +52,7 @@
                         {% endfor %}
                         <br><br>
                         <a href="/admin/fridge/recipe/{{ recipe.id }}/change/" class="btn btn-primary">Edit recipe</a>
+                        <a href="/fridge/printable/{{ recipe.id }}/" class="btn btn-primary">Print recipe</a>
                         <br><br>
                         {% comment %}
                         {% if recipe.missing %}

@@ -5,4 +5,5 @@ app_name = 'fridge'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('printable/<int:recipe_id>/', views.printable, name="printable"),
 ]
