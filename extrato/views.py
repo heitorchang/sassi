@@ -104,7 +104,7 @@ def index(request):
 
 @login_required
 def transacoes(request):
-    transacoes = Transacao.objects.all()
+    transacoes = Transacao.objects.all().order_by('-data', '-id')
 
     return render(request, 'extrato/transacoes.html', {'transacoes': transacoes})
 
