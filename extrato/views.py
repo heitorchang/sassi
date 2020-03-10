@@ -66,6 +66,7 @@ def agregarTransacoes(trs):
             result.append({'nome': titulos[nomeDoTitulo].nome,
                            'vencimento': titulos[nomeDoTitulo].vencimento,
                            'quantidade': titulos[nomeDoTitulo].quantidade,
+                           'precoNum': titulos[nomeDoTitulo].precoTotal,
                            'precoTotal': "{:,.2f}".format(titulos[nomeDoTitulo].precoTotal),
                            'preco': "{:,.2f}".format(titulos[nomeDoTitulo].preco),
                            'precoAtual': "{:,.2f}".format(titulos[nomeDoTitulo].quantidade * titulos[nomeDoTitulo].preco),
@@ -86,9 +87,14 @@ def index(request):
     for corretora in corretoras:
         transacoes = Transacao.objects.filter(corretora=corretora)
         corretorasDict[corretora].nome = corretora.nome
-        corretorasDict[corretora].total = transacoes_total(transacoes)
+        # corretorasDict[corretora].total = transacoes_total(transacoes)
+        corretorasDict[corretora].total = 0
         corretorasDict[corretora].titulos = agregarTransacoes(transacoes)
 
+        # compute value of positive amount of titulos
+        for t in corretorasDict[corretora].titulos:
+            corretorasDict[corretora].total += t['precoNum']
+        
         grandTotal += corretorasDict[corretora].total
         
     result = []
