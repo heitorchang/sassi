@@ -56,5 +56,5 @@ class Transacao(models.Model):
             str(self.preco), self.anotacoes)
 
     class Meta:
-        ordering = ['-data', 'corretora', 'titulo']
+        ordering = ['-data', '-id']
         verbose_name_plural = "Transações"
