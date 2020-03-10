@@ -102,7 +102,7 @@ def index(request):
     
 
 def transacoes(request):
-    transacoes = Transacao.objects.all().order_by('-id')
+    transacoes = Transacao.objects.all().order_by('data')
 
     return render(request, 'extrato/transacoes.html', {'transacoes': transacoes})
 
