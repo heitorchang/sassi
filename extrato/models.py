@@ -42,17 +42,17 @@ class Transacao(models.Model):
     sinal = models.IntegerField(default=1)
     corretora = models.ForeignKey(Corretora, on_delete=models.CASCADE)
     titulo = models.ForeignKey(Titulo, on_delete=models.CASCADE)
-    quantidade = models.DecimalField(max_digits=6, decimal_places=2)
     preco = models.DecimalField(max_digits=8, decimal_places=2)
+    quantidade = models.DecimalField(max_digits=6, decimal_places=2)
     rendimento = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
     anotacoes = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
         movimento = "Compra" if self.sinal == 1 else "Venda"
-        return "{} {} {}: {} x{} R$ {} {}".format(
+        return "{} {} {}: {} x{} R$ {} ({}%) {}".format(
             self.data, movimento, self.corretora,
             self.titulo, str(self.quantidade),
-            str(self.preco), self.anotacoes)
+            str(self.preco), str(self.rendimento), self.anotacoes)
 
     class Meta:
         ordering = ['-data', '-id']
