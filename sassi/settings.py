@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'extrato',
     'fridge',
     'tesdir',
+    'markets',
     'ui',
     'django.contrib.admin',
     'django.contrib.auth',
