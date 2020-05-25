@@ -60,4 +60,4 @@ class Price(models.Model):
         ordering = ['-purchase_date', 'product', 'brand', 'market']
         
     def __str__(self):
-        return "{} {} {} {} {}".format(self.purchase_date, self.product.name, self.market.name, self.unit, self.price)
+        return "{} {}, {} {} R$ {:.2f}".format(self.purchase_date, self.product.name, self.market.name, self.unit, self.price)
