@@ -50,7 +50,7 @@ class Ingredient(models.Model):
 class Recipe(models.Model):
     """Description of a recipe"""
 
-    name = models.CharField(max_length=78)
+    name = models.CharField(max_length=78, unique=True)
     procedure = models.TextField(blank=True)
 
 
