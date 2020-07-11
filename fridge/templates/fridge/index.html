@@ -115,7 +115,13 @@
 		<tr>
 		  <td>{{ recipe.name }}</td>
 		  <td>&nbsp;</td>
-		  <td>{{ recipe.diaryentry_set.count }}</td>
+		  <td>{{ recipe.diaryentry_set.count }} (
+                        	{% for entry in recipe.diaryentry_set.all|slice:":5" %}	
+     	                   {{ entry.cooked_on|date:'D d/m' }}
+        	                {% if not forloop.last %}, {% endif %}
+            {% endfor %}
+			)
+          </td>
 		</tr>	
 		{% endfor %}
 	  </table>
