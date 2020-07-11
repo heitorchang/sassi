@@ -9,7 +9,7 @@ def index(request):
     diary_start = date.today() - timedelta(days=90)
     fridges = Fridge.objects.all()
     recipes = Recipe.objects.all()
-    sortedrecipes = Recipe.objects.annotate(count=Count('diaryentry__id')).order_by('-count')
+    sortedrecipes = Recipe.objects.annotate(count=Count('diaryentry__id')).order_by('-count', 'name')
     entries = DiaryEntry.objects.filter(cooked_on__gte=diary_start)
     return render(request, 'fridge/index.html',
                   {'fridges': fridges,
