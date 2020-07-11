@@ -32,6 +32,7 @@
                         <button class="btn btn-link text-left" type="button" data-toggle="collapse" data-target="#collapse{{ recipe.id }}">
                             {{ recipe.name }}
 
+							(made {{ recipe.diaryentry_set.count }}x)
                             {% comment %}
                             {% if recipe.missing %}
                             <img src="{% static 'img/warning.png' %}" alt="(!)">
